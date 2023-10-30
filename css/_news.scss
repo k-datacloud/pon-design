@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+$breakpoints: (
+    "small": 480px,
+    "medium": 768px,
+    "large": 1024px,
+);
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        @media (max-width: $breakpoint-value) {
+            @content;
+        }
+    }
+}
+
+;
+
+.post {
+    width: 100%;
+    margin: 80px 0 160px 0;
+
+    &__item {
+        width: 70%;
+        margin-left: auto;
+        display: flex;
+        margin-bottom: 30px;
+
+        @include respond-to(medium) {
+            width: 90%;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+    }
+
+    &__link {
+        color: #333333;
+        text-decoration: none;
+        text-align: center;
+
+        @include respond-to(medium) {
+            display: block;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__category {
+        margin-right: 30px;
+        color: #333333;
+        background-color: #E8E8E8;
+        border-radius: 10px;
+        font-weight: bold;
+        padding: 3px 20px;
+        text-align: center;
+    }
+
+    .page-numbers {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+
+        li {
+            list-style: none;
+            margin-top: 40px;
+            margin-right: 20px;
+
+            a {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-image: linear-gradient(135deg, #7633a4, #250d65);
+                color: #FFFFFF;
+                text-decoration: none;
+                display: grid;
+                place-items: center;
+            }
+
+            span {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #f1ebf8;
+                color: #333333;
+                display: grid;
+                place-items: center;
+            }
+
+            .next {
+                display: none;
+            }
+
+            .prev {
+                display: none;
+            }
+        }
+    }
+}

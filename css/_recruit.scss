@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+$breakpoints: (
+    "small": 480px,
+    "medium": 768px,
+    "large": 1024px,
+);
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        @media (max-width: $breakpoint-value) {
+            @content;
+        }
+    }
+}
+
+;
+
+.recruit-back {
+    width: 100%;
+    background-image: url('../img/bg-geometry.png');
+    padding-top: 70px;
+
+    .recruit-message {
+        width: 100%;
+        margin-bottom: 80px;
+
+        &__title {
+            width: 90%;
+            margin: 0 auto 40px auto;
+            color: #7633a4;
+            font-size: 72px;
+            text-align: center;
+
+            @include respond-to(medium) {
+                font-size: 48px;
+            }
+        }
+
+        &__subtitle {
+            display: block;
+            font-size: 32px;
+
+            @include respond-to(medium) {
+                font-size: 18px;
+            }
+        }
+
+        &__text {
+            text-align: center;
+            font-size: 18px;
+            color: #333333;
+            margin: 0 0 40px 0;
+        }
+
+        .recruit-img {
+
+            &__item {
+                width: 100%;
+            }
+        }
+    }
+
+    .recruit-type {
+        width: 100%;
+        margin-bottom: 80px;
+
+        &__title {
+            color: #7633a4;
+            text-align: center;
+            font-size: 40px;
+
+            @include respond-to(medium) {
+                font-size: 24px;
+            }
+        }
+
+        .recruit-guide {
+            width: 80%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            border: solid 1px #b067cf;
+            border-radius: 5px;
+            padding: 80px 90px;
+
+            @include respond-to(medium) {
+                width: 90%;
+                padding: 20px;
+            }
+
+            &__title {
+                color: #333333;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 40px;
+                font-size: 24px;
+            }
+
+
+
+            .recruit-content {
+                display: flex;
+                border-bottom: solid 1px #dddddd;
+
+                @include respond-to(medium) {
+                    display: block;
+                    font-size: 14px;
+                    padding: 20px 0;
+                }
+
+                &__title {
+                    width: 20%;
+                    color: #333333;
+                    margin: 0;
+                    padding: 40px 10px;
+
+                    @include respond-to(medium) {
+                        padding: 0;
+                        width: auto;
+                    }
+
+                }
+
+                &__text {
+                    color: #333333;
+                    margin: 0;
+                    padding: 40px 20px;
+
+                    @include respond-to(medium) {
+                        padding: 0;
+                        width: auto;
+                    }
+                }
+
+                .skill {
+                    width: 75%;
+                    padding: 40px 20px;
+
+                    @include respond-to(medium) {
+                        padding: 0;
+                        width: auto;
+                    }
+
+                    &__menu {
+                        padding-left: 20px;
+                        margin-bottom: 0;
+                    }
+                }
+
+            }
+
+            .recruit-content:nth-child(6) {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
